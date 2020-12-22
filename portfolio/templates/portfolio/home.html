@@ -1,0 +1,46 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="row justify-content-center top-div">
+  <div class="col-md-9 text-center">
+    <img class="img-fluid rounded-circle" width="100px" src="{% static 'portfolio/steve.png' %}" />
+    <h1 class="heading-text text-responsive id=" hometext"></h1>
+  </div>
+</div>
+
+<h2 class="mt-5">Qualifications</h2>
+<hr>
+<ul>
+  <li>I love to code.</li>
+  <li>I have over ten years of experience in app and web development.</li>
+  <li>Proficient in Python, Javascript, MongoDB, Node.js, SQL, PHP, Obj-C, Swift, HTML, CSS.</li>
+  <li>Over 95k native iOS Applications Sold on Apple App Store. </li>
+  <li>Great ability to work with a team.</li>
+  <li>Excellent problem-solving skills.</li>
+  <li>Excellent communication skills.</li>
+</ul>
+
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}" target="_blank">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2 rounded mx-auto d-block detail-image" width="75px">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-2 rounded mx-auto d-block detail-image">
+    {% endif %}
+    <h3 class="text-center">{{ project.title }}</h3>
+    <p class="text-center project-description">{{ project.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

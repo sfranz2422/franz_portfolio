@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 class="text-center mt-5" id="blogdetailtitle">{{ post.title }}</h1>
+<h5 class="text-center text-muted mb-5">--{{ post.date|date:'F jS' }}--</h5>
+{% if post.image %}
+
+<img src="{{ post.image.url }}" class="rounded mx-auto d-block detail-image" width="75px"/>
+{% endif %}
+<p>{{ post.content|safe }}</p>
+
+
+{% if post.url %}
+
+<br /><a href="{{ post.url }}">Link</a>
+
+{% endif %}
+
+
+{% endblock %}
